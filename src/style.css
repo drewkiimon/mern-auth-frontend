@@ -42,6 +42,10 @@ body {
     font-family: Roboto, monospace;
 }
 
+.page {
+    padding: 1rem;
+}
+
 /* header */
 #header {
     height: 50px;

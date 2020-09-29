@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: #89e7eb;
+    text-decoration: unset;
+}
+
+ul {
+    margin-left: 1.5rem;
+    list-style: none;
+}
+
+button,
+input[type='submit'] {
+    border: none;
+    background: none;
+    color: unset;
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+    margin: 1em 0;
+}
+
+/* general */
+body {
+    font-family: Roboto, monospace;
+}
+
+.page {
+    padding: 1rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* header */
+#header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #d63636;
+
+    .title {
+        margin: 0;
+        padding: 0 1rem;
+        color: white;
+    }
+
+    .auth-options {
+        height: 100%;
+        display: flex;
+
+        button {
+            color: white;
+            padding: 0 1rem;
+            background-color: #ce3333e7;
+            font-size: 1.1rem;
+
+            &:hover {
+                background-color: #e43b3b;
+            }
+        }
+    }
+}
+
+/* form */
+
+.form {
+    label {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    input {
+        display: block;
+        margin-bottom: .2rem;
+
+        &:focus {
+            outline: none;
+            border: 1px solid #39bae2;
+            box-shadow: inset 0px 0px 5px rgba(64, 199, 240, 0.5);
+        }
+    }
+
+    input[type='text'],
+    input[type='password'],
+    input[type='email'] {
+        width: 100%;
+        border: 1px solid #c2c2c2;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        padding: 0.3rem;
+    }
+
+    input[type='submit'] {
+        font-size: 1.1rem;
+        border-radius: 8px;
+        padding: 0.3rem .5rem;
+        border: 1px solid #45c81c;
+        background-color: #57c735;
+    }
+}
+
+/* error notice */
+.error-notice {
+    padding: .5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #e07c7c;
+    background-color: #f9d6d6;
+    border-radius: 8px;
+    margin: 1rem 0;
+
+    button {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        color: white;
+        background-color: #d33333;
+    }
+}
+
+/* media queries */
+
+@media screen and (max-width: 550px) {
+    #header .title {
+        font-size: 1.1rem;
+    }
+
+    #header .auth-options button {
+        padding: 0 0.5rem;
+        font-size: 0.9rem;
+    }
+}

@@ -10,5 +10,6 @@
     },
     "cSpell.enableFiletypes": [
         "!json"
-    ]
+    ],
+    "compile-hero.disable-compile-files-on-did-save-code": false
 }

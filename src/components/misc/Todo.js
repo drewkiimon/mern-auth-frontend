@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Moment from 'moment';
 
 export default function Todo(props) {
+	const [isChecked, setIsChecked] = useState(false);
 	const [inEditMode, setInEditMode] = useState(false);
 	const [updatedTodo, setUpdatedTodo] = useState(props.title);
 
@@ -15,7 +15,7 @@ export default function Todo(props) {
 	return (
 		<li>
 			{inEditMode ? (
-				<form className='form' onSubmit={submit}>
+				<form className='checkbox-form' onSubmit={submit}>
 					<input
 						type='text'
 						id='addTodo'
@@ -26,13 +26,22 @@ export default function Todo(props) {
 					<input type='submit' value='Update Todo' />
 				</form>
 			) : (
-				<h2 onClick={() => setInEditMode(true)}>{props.title}</h2>
+				<form className='checkbox-form'>
+					<input
+						type='checkbox'
+						id='todo'
+						name='todo'
+						checked={isChecked}
+						onChange={() => {
+							setIsChecked(true);
+							props.deleteTodo(props.id);
+						}}
+					/>
+					<label name='todo' onClick={() => setInEditMode(true)}>
+						{props.title}
+					</label>
+				</form>
 			)}
-
-			<span>
-				{Moment(props.timestamp).format('MMMM Do YYYY, h:mm:ss A')}
-			</span>
-			<button onClick={() => props.deleteTodo(props.id)}>Delete</button>
 		</li>
 	);
 }

@@ -73,11 +73,11 @@ export default function Home() {
 				}
 			);
 
-			let newTodos = _.remove(todos, (i) => {
-				return i._id !== deletedTodo.data._id;
-			});
-
-			setTodos(newTodos);
+			setTodos(
+				_.filter(todos, (i) => {
+					return i._id !== deletedTodo.data._id;
+				})
+			);
 		} catch (err) {
 			err.response.data.msg && setError(err.response.data.msg);
 		}
@@ -129,10 +129,10 @@ export default function Home() {
 
 			<ul>
 				{todos.length > 0
-					? todos.map((item, i) => {
+					? todos.map((item) => {
 							return (
 								<Todo
-									key={i}
+									key={item._id}
 									id={item._id}
 									title={item.title}
 									updateTodo={updateTodo}

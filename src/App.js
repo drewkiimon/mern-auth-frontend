@@ -26,7 +26,7 @@ export default function App() {
 			}
 
 			const tokenRes = await Axios.post(
-				'http://localhost:5000/users/tokenIsValid',
+				'https://devistry-mern-backend.herokuapp.com/users/tokenIsValid',
 				null,
 				{
 					headers: {
@@ -37,7 +37,7 @@ export default function App() {
 
 			if (tokenRes.data) {
 				const userRes = await Axios.get(
-					'http://localhost:5000/users/',
+					'https://devistry-mern-backend.herokuapp.com/users/',
 					{
 						headers: {
 							'x-auth-token': token,

@@ -26,11 +26,14 @@ export default function Home() {
 		const getAllTodos = async () => {
 			let token = localStorage.getItem('auth-token');
 
-			const todos = await Axios.get('http://localhost:5000/todos/', {
-				headers: {
-					'x-auth-token': token,
-				},
-			});
+			const todos = await Axios.get(
+				'https://devistry-mern-backend.herokuapp.com/todos/',
+				{
+					headers: {
+						'x-auth-token': token,
+					},
+				}
+			);
 
 			setTodos(todos.data);
 		};
@@ -44,7 +47,7 @@ export default function Home() {
 			let token = localStorage.getItem('auth-token');
 
 			var returnedTodo = await Axios.post(
-				'http://localhost:5000/todos/',
+				'https://devistry-mern-backend.herokuapp.com/todos/',
 				{ title: todo },
 				{
 					headers: {
@@ -65,7 +68,7 @@ export default function Home() {
 			let token = localStorage.getItem('auth-token');
 
 			var deletedTodo = await Axios.delete(
-				`http://localhost:5000/todos/${id}`,
+				`https://devistry-mern-backend.herokuapp.com/todos/${id}`,
 				{
 					headers: {
 						'x-auth-token': token,
@@ -90,7 +93,7 @@ export default function Home() {
 				oldTodos = _.cloneDeep(todos);
 
 			let updatedTodo = await Axios.patch(
-				`http://localhost:5000/todos/${id}`,
+				`https://devistry-mern-backend.herokuapp.com/todos/${id}`,
 				{ title },
 				{
 					headers: {

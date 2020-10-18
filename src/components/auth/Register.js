@@ -26,12 +26,15 @@ export default function Register() {
 				displayName,
 			};
 
-			await Axios.post('http://localhost:5000/users/register', newUser);
+			await Axios.post(
+				'https://devistry-mern-backend.herokuapp.com/users/register',
+				newUser
+			);
 
 			// do not have JWT yet
 
 			const loginRes = await Axios.post(
-				'http://localhost:5000/users/login',
+				'https://devistry-mern-backend.herokuapp.com/users/login',
 				{
 					email,
 					password,

@@ -27,7 +27,7 @@ export default function Login() {
 			};
 
 			const loginRes = await Axios.post(
-				'http://localhost:5000/users/login',
+				'https://devistry-mern-backend.herokuapp.com/users/login',
 				loginUser
 			);
 

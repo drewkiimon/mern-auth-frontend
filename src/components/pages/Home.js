@@ -38,6 +38,10 @@ export default function Home() {
 		getAllTodos();
 	}, []);
 
+	useEffect(() => {
+		console.log('updated todos');
+	}, [todos]);
+
 	const submit = async (e) => {
 		try {
 			e.preventDefault();
@@ -86,7 +90,8 @@ export default function Home() {
 	// Updates on click right now
 	const updateTodo = async (id) => {
 		try {
-			let token = localStorage.getItem('auth-token');
+			let token = localStorage.getItem('auth-token'),
+				oldTodos = _.cloneDeep(todos);
 
 			let updatedTodo = await Axios.patch(
 				`http://localhost:5000/todos/${id}`,
@@ -98,9 +103,10 @@ export default function Home() {
 				}
 			);
 
-			let index = _.findIndex(todos, { _id: id });
-			todos[index] = updatedTodo.data;
-			setTodos(todos);
+			let index = _.findIndex(oldTodos, { _id: id });
+			oldTodos[index] = updatedTodo.data;
+
+			setTodos(oldTodos);
 		} catch (err) {
 			err.response.data.msg && setError(err.response.data.msg);
 		}

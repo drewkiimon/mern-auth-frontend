@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import Axios from 'axios';
+import _ from 'lodash';
 
 import ErrorNotice from '../misc/ErrorNotice';
 import Todo from '../misc/Todo';
@@ -25,7 +26,7 @@ export default function Home() {
 		const getAllTodos = async () => {
 			let token = localStorage.getItem('auth-token');
 
-			const todos = await Axios.get('http://localhost:5000/todos/all', {
+			const todos = await Axios.get('http://localhost:5000/todos/', {
 				headers: {
 					'x-auth-token': token,
 				},
@@ -59,6 +60,52 @@ export default function Home() {
 		}
 	};
 
+	const deleteTodo = async (id) => {
+		try {
+			let token = localStorage.getItem('auth-token');
+
+			var deletedTodo = await Axios.delete(
+				`http://localhost:5000/todos/${id}`,
+				{
+					headers: {
+						'x-auth-token': token,
+					},
+				}
+			);
+
+			let newTodos = _.remove(todos, (i) => {
+				return i._id !== deletedTodo.data._id;
+			});
+
+			setTodos(newTodos);
+		} catch (err) {
+			err.response.data.msg && setError(err.response.data.msg);
+		}
+	};
+
+	// Updates on click right now
+	const updateTodo = async (id) => {
+		try {
+			let token = localStorage.getItem('auth-token');
+
+			let updatedTodo = await Axios.patch(
+				`http://localhost:5000/todos/${id}`,
+				{ title: 'Chicken chicken nom nom' },
+				{
+					headers: {
+						'x-auth-token': token,
+					},
+				}
+			);
+
+			let index = _.findIndex(todos, { _id: id });
+			todos[index] = updatedTodo.data;
+			setTodos(todos);
+		} catch (err) {
+			err.response.data.msg && setError(err.response.data.msg);
+		}
+	};
+
 	return (
 		<div className='page'>
 			{error && (
@@ -79,16 +126,19 @@ export default function Home() {
 			</form>
 
 			<ul>
-				{todos.length > 0 &&
-					todos.map((item, i) => {
-						return (
-							<Todo
-								key={i}
-								id={item._id}
-								title={item.title}
-								timestamp={item.createdAt}></Todo>
-						);
-					})}
+				{todos.length > 0
+					? todos.map((item, i) => {
+							return (
+								<Todo
+									key={i}
+									id={item._id}
+									title={item.title}
+									updateTodo={updateTodo}
+									deleteTodo={deleteTodo}
+									timestamp={item.createdAt}></Todo>
+							);
+					  })
+					: 'You have nothing todo~'}
 			</ul>
 		</div>
 	);

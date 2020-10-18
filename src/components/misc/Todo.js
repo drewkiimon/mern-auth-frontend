@@ -1,32 +1,11 @@
-import React, { useState } from 'react';
-import Axios from 'axios';
+import React from 'react';
 
 export default function Todo(props) {
-	const [isLive, setIsLive] = useState(true);
-
-	const deleteTodo = async () => {
-		let token = localStorage.getItem('auth-token');
-
-		await Axios.delete(`http://localhost:5000/todos/${props.id}`, {
-			headers: {
-				'x-auth-token': token,
-			},
-		});
-
-		setIsLive(false);
-	};
-
 	return (
-		<>
-			{isLive ? (
-				<li>
-					<h2>{props.title}</h2>
-					<span>{props.timestamp}</span>
-					<button onClick={deleteTodo}>Delete</button>
-				</li>
-			) : (
-				<></>
-			)}
-		</>
+		<li>
+			<h2 onClick={() => props.updateTodo(props.id)}>{props.title}</h2>
+			<span>{props.timestamp}</span>
+			<button onClick={() => props.deleteTodo(props.id)}>Delete</button>
+		</li>
 	);
 }

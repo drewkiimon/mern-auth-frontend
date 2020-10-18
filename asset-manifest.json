@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mern-auth-frontend/static/css/main.9cc3c86a.chunk.css",
+    "main.js": "/mern-auth-frontend/static/js/main.3d19d617.chunk.js",
+    "main.js.map": "/mern-auth-frontend/static/js/main.3d19d617.chunk.js.map",
+    "runtime-main.js": "/mern-auth-frontend/static/js/runtime-main.3211440b.js",
+    "runtime-main.js.map": "/mern-auth-frontend/static/js/runtime-main.3211440b.js.map",
+    "static/js/2.a87d4296.chunk.js": "/mern-auth-frontend/static/js/2.a87d4296.chunk.js",
+    "static/js/2.a87d4296.chunk.js.map": "/mern-auth-frontend/static/js/2.a87d4296.chunk.js.map",
+    "index.html": "/mern-auth-frontend/index.html",
+    "precache-manifest.03b0669a7584ad7a6ff7941dc5330af0.js": "/mern-auth-frontend/precache-manifest.03b0669a7584ad7a6ff7941dc5330af0.js",
+    "service-worker.js": "/mern-auth-frontend/service-worker.js",
+    "static/css/main.9cc3c86a.chunk.css.map": "/mern-auth-frontend/static/css/main.9cc3c86a.chunk.css.map",
+    "static/js/2.a87d4296.chunk.js.LICENSE.txt": "/mern-auth-frontend/static/js/2.a87d4296.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3211440b.js",
+    "static/js/2.a87d4296.chunk.js",
+    "static/css/main.9cc3c86a.chunk.css",
+    "static/js/main.3d19d617.chunk.js"
+  ]
+}

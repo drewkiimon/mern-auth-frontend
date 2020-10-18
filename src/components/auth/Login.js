@@ -9,9 +9,13 @@ export default function Login() {
 	const [password, setPassword] = useState();
 	const [error, setError] = useState();
 
-	const { setUserData } = useContext(UserContext);
+	const { userData, setUserData } = useContext(UserContext);
 
 	const history = useHistory();
+
+	if (userData.user) {
+		history.push('/');
+	}
 
 	const submit = async (e) => {
 		try {

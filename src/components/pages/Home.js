@@ -38,10 +38,6 @@ export default function Home() {
 		getAllTodos();
 	}, []);
 
-	useEffect(() => {
-		console.log('updated todos');
-	}, [todos]);
-
 	const submit = async (e) => {
 		try {
 			e.preventDefault();
@@ -88,14 +84,14 @@ export default function Home() {
 	};
 
 	// Updates on click right now
-	const updateTodo = async (id) => {
+	const updateTodo = async (id, title) => {
 		try {
 			let token = localStorage.getItem('auth-token'),
 				oldTodos = _.cloneDeep(todos);
 
 			let updatedTodo = await Axios.patch(
 				`http://localhost:5000/todos/${id}`,
-				{ title: 'Chicken chicken nom nom' },
+				{ title },
 				{
 					headers: {
 						'x-auth-token': token,
